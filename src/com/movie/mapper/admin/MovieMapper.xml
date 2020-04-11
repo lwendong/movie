@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.admin.MovieDao">
+	<resultMap type="com.movie.pojo.Movie" id="movieModel">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="type_name" property="typeName"/>
+        <result column="type_code" property="typeCode"/>
+        <result column="img" property="img"/>
+        <result column="surplus" property="surplus"/>
+        <result column="price" property="price"/>
+        <result column="time" property="time"/>
+        <result column="release_time" property="releaseTime"/>
+        <result column="play_place" property="playPlace"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+    
+	<select id="selectMovieByPage"  resultMap="movieModel" parameterType="page">
+		select m.*,t.name as type_name from movie m left join type t on m.type_code = t.code where m.deleted = 0 and t.deleted = 0 order by m.time desc limit #{page.pageNo},#{page.pageSize} 
+	</select>
+	
+	<select id="selectMovieCount"  resultType="Integer" parameterType="page">
+		select count(1) from movie where deleted = 0  limit #{page.pageNo},#{page.pageSize}
+	</select>
+	
+	<update id="deleteMovies" parameterType="string">
+		update movie set deleted = 1 where id in
+		<foreach item="movieId" index="index" collection="movieIds"
+			open="(" separator="," close=")">
+				#{movieId}
+		</foreach>
+	</update>
+	
+	<update id="deleteOneMovie" parameterType="string">
+		update movie set deleted = 1 where id = #{movieId}
+	</update>
+	
+	<insert id="addNewMovie" parameterType="movie">
+		insert into movie values(replace(uuid(),"-",""),#{movie.name},#{movie.description},#{movie.typeCode},#{movie.img},#{movie.surplus},#{movie.price},now(),#{movie.releaseTime},#{movie.playPlace},0)
+	</insert>
+	
+	<update id="updateMovie" parameterType="movie">
+		update movie set 
+			name = #{movie.name}, 
+			description = #{movie.description},
+			type_code = #{movie.typeCode},
+			<if test="movie.img != null and movie.img != '' ">
+			   img = #{movie.img},
+			</if>
+			surplus = #{movie.surplus},
+			price = #{movie.price},
+			time = now(),
+			release_time = #{movie.releaseTime},
+			play_place = #{movie.playPlace}
+		where id = #{movie.id}
+	</update>
+	
+	<select id="movieDetails"  resultMap="movieModel" parameterType="string">
+		select m.*,t.name as type_name,t.code as type_code from movie m left join type t on m.type_code = t.code where m.deleted = 0 and m.id = #{movieId} order by m.time desc 
+	</select>
+</mapper>

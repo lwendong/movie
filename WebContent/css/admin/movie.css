@@ -1,0 +1,66 @@
+.outer{
+	width:100%;
+}
+table{
+	text-align: center;
+	border-collapse: collapse;
+	table-layout: fixed;
+	/* height:626px; */
+}
+table tr{
+	height:50px;
+}
+td {
+	width:300px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+}
+.bgcolor{
+  	background-color: #FAF5F1;
+}
+.page{
+	position:absolute;
+	top: 672px;
+    left: 1020px;
+}
+
+.dele{
+	width:100px;
+	height:25px;
+	background-color: #62AAFF;
+	color:#fff;
+	border:0;
+	font-size:16px;
+}
+.add{
+	width: 100px;
+    height: 25px;
+    background-color: #62AAFF;
+    color: #fff;
+    border: 0;
+    font-size: 16px;
+    position: absolute;
+    top: 36px;
+    left: 1470px;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 3px;
+}
+.addOne{
+    width: 100px;
+    height: 25px;
+    background-color: #62AAFF;
+    color: #fff;
+    border: 0;
+    font-size: 16px;
+    position: absolute;
+    top: 36px;
+    left: 1355px;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 3px;
+}

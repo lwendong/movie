@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.before.UserDao">
+
+	<select id="selectUserByTelAndPassword" resultType="user">
+		select * from user where tel = #{tel} and password = #{pw}
+	</select>
+	
+	<insert id="insertUser"  parameterType="user">
+		insert into user (id, tel, password,name) values (replace(uuid(),"-",""), #{user.tel}, #{user.password},#{user.name})
+	</insert>
+	
+	<select id="selectByTel" resultType="user" parameterType="string">
+		select * from user where tel = #{tel} 
+	</select>
+</mapper>

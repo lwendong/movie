@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.admin.MovieTypeDao">
+
+	<insert id="addType" parameterType="movieType">
+		insert into type values(replace(uuid(),"-",""), #{type.code}, #{type.name},now(),0)
+	</insert>
+	
+	<select id="selectTypeByPage"  resultType="movieType" parameterType="page">
+		select * from type where deleted = 0  order by time desc limit #{page.pageNo},#{page.pageSize} 
+	</select>
+	
+	<select id="selectTypeCount"  resultType="Integer" parameterType="page">
+		select count(1) from type where deleted = 0  limit #{page.pageNo},#{page.pageSize} 
+	</select>
+	
+	<update id="deleteType"  parameterType="string">
+		update type set deleted = 1 where id = #{typeId}
+	</update>
+	
+	<select id="selectAllMovieType" resultType="movieType">
+		select code,name from type order by time desc
+	</select>
+</mapper>

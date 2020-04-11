@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.admin.TicketDao">
+    <resultMap type="com.movie.pojo.Ticket" id="ticketModel">
+        <id column="id" property="id"/>
+        <result column="type" property="type"/>
+        <result column="user_id" property="userId"/>
+        <result column="movie_id" property="movieId"/>
+        <result column="num" property="num"/>
+        <result column="time" property="time"/>
+    </resultMap>
+    
+	<select id="selectTicketByPage"  resultMap="ticketModel" parameterType="page">
+		select * from ticket order by time desc limit #{page.pageNo},#{page.pageSize} 
+	</select>
+	
+	<select id="selectTicketCount"  resultType="Integer" parameterType="page">
+		select count(1) from ticket  limit #{page.pageNo},#{page.pageSize} 
+	</select>
+	
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- <typeAlias alias="User" type="po.User"/> -->
+		<typeAlias alias="user" type="com.movie.pojo.User"/>
+		<typeAlias alias="movieType" type="com.movie.pojo.MovieType"/>
+		<typeAlias alias="page" type="com.movie.pojo.PageInfo"/>
+		<typeAlias alias="movie" type="com.movie.pojo.Movie"/>
+		<typeAlias alias="notice" type="com.movie.pojo.Notice"/>
+		<typeAlias alias="comment" type="com.movie.pojo.Comment"/>
+		<typeAlias alias="ticket" type="com.movie.pojo.Ticket"/>
+	</typeAliases> 
+	 <mappers>
+        <!-- <mapper resource="mapper/admin/AdminGoodsMapper.xml"/> -->
+        <mapper resource="com/movie/mapper/before/UserMapper.xml"/>
+        <mapper resource="com/movie/mapper/admin/MovieTypeMapper.xml"/>
+        <mapper resource="com/movie/mapper/admin/MovieMapper.xml"/>
+        <mapper resource="com/movie/mapper/admin/NoticeMapper.xml"/>
+        <mapper resource="com/movie/mapper/admin/AdminMapper.xml"/>
+        <mapper resource="com/movie/mapper/admin/CommentMapper.xml"/>
+        <mapper resource="com/movie/mapper/admin/TicketMapper.xml"/>
+ 	</mappers>
+</configuration>
+
