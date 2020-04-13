@@ -39,7 +39,7 @@ function deleteOne(movieId){
 			  "movieId": movieId
 		    },
 	        success: function (data) {
-	        	if(data.success){
+	        	if(!data.success){
 	        		alert("删除失败");
 	        	}
 	        	window.location.reload();

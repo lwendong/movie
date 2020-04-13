@@ -26,4 +26,6 @@ public interface NoticeDao {
 	public Integer updateNotice(@Param("notice") Notice notice);
 	
 	public Notice noticeDetails(String noticeId);
+	
+	public List<Notice> selectNotice();
 }

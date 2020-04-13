@@ -1,6 +1,8 @@
 package com.movie.pojo;
 
-public class PageInfo {
+public class PageInfo extends BaseModel{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Integer pageNo;
 	private Integer pageSize;

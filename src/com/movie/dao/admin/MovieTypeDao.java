@@ -24,4 +24,6 @@ public interface MovieTypeDao {
 	public Integer deleteType(@Param("typeId") String typeId);
 	
 	public List<MovieType> selectAllMovieType();
+	
+	public List<MovieType> selectType();
 }

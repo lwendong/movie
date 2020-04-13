@@ -65,4 +65,16 @@ public class NoticeServiceImpl implements NoticeService {
 		model.addAttribute("notice", notice);
 		return "admin/addNotice";
 	}
+
+	@Override
+	public List<Notice> selectNotice() {
+		return noticeDao.selectNotice();
+	}
+
+	@Override
+	public String noticeDetailsForBefore(String noticeId, Model model) {
+		Notice notice = noticeDao.noticeDetails(noticeId);
+		model.addAttribute("notice", notice);
+		return "before/noticedetail";
+	}
 }

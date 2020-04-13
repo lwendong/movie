@@ -21,6 +21,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="selectAllMovieType" resultType="movieType">
-		select code,name from type order by time desc
+		select code,name from type where deleted = 0 order by time desc
 	</select>
+	
+	<select id="selectType" resultType="movieType">
+		select code,name from type where deleted = 0 order by time desc
+	</select>
+	
 </mapper>

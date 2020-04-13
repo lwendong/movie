@@ -1,5 +1,7 @@
 package com.movie.service.admin;
 
+import java.util.List;
+
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,5 +19,9 @@ public interface NoticeService {
 	
 	public String noticeDetails(String noticeId,Model model);
 	
+	public String noticeDetailsForBefore(String noticeId,Model model);
+	
 	public String addOrUpdateNotice(Notice notice);
+	
+	public List<Notice> selectNotice();
 }

@@ -28,4 +28,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from notice where deleted = 0  and id = #{noticeId}
 	</select>
 	
+	<select id="selectNotice"  resultType="notice">
+		select * from notice where deleted = 0 
+	</select>
+	
 </mapper>

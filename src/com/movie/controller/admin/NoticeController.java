@@ -4,7 +4,6 @@ package com.movie.controller.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -49,4 +48,11 @@ public class NoticeController {
 	public String pageSwitch (Model model,Integer pageNo) {
 		return noticeService.toNotice(model,pageNo);
 	}
+	
+	@RequestMapping("/noticeDetailsForBefore")
+	public String noticeDetailsForBefore(String noticeId,Model model){
+		return noticeService.noticeDetailsForBefore(noticeId,model);
+	}
+	
+	
 }

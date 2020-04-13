@@ -1,14 +1,13 @@
-/* 外框 */
 .index{
 	padding: 0; 
 	margin: 0 auto;
 	width: 100%; 
 }
-/*中间内容布局*/
+
 .index_center{
 	width: 70%; 
 }
-/*中间内容左部分*/
+
 .index_center_left{
 	float: left;
 	width: 14%;
@@ -18,19 +17,18 @@
 .f1{
 	color: #FF2832;
 	width:77px;
-	white-space:nowrap;/*规定段落中的文本不进行换行*/
-	overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
-	text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
+	white-space:nowrap;/*锟芥定锟斤拷锟斤拷锟叫碉拷锟侥憋拷锟斤拷锟斤拷锟叫伙拷锟斤拷*/
+	overflow:hidden;/*锟斤拷锟捷会被锟睫硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟角诧拷锟缴硷拷锟侥★拷*/
+	text-overflow:ellipsis;/*锟斤拷示省锟皆猴拷锟斤拷锟斤拷锟斤拷锟睫硷拷锟斤拷锟侥憋拷*/
 }
 
-/*index 中间内容中间部分 */
+
 .index_center_middle{
 	float: left;
 	width: 1344px;
 	border-top: none;
 }
 
-/*最新商品*/
 .new_goods ul li{
 	list-style: none;
 	width: 228px;
@@ -44,14 +42,11 @@
 	color: #000; 
 }
 
-/*最新商品图片*/
 .new_show{
   	height: 270px;
   	max-width: 100%;
 }
 
-
-/*index 中间内容右部分  公告栏*/
 .index_center_right{
 	/* background-color:pink; */
 	float: left;
@@ -62,14 +57,12 @@
 	width: 100%;
 	margin-left:0px;
 }
-/*公告栏标题*/
 .notice_title{
 	text-align: center;
 	width: 100%;
 	padding: 11px 0px;
 	background-color: #EFF4FA;
 }
-/*公告列表*/
 .notice_con ul li{
 	margin-left:28px;
 	padding-top:20px;
@@ -82,17 +75,17 @@
 	width:auto;
 	margin-top:23px;
 	font-size:18px;
-	white-space:nowrap;/*规定段落中的文本不进行换行*/
-	overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
-	text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
+	white-space:nowrap;/*锟芥定锟斤拷锟斤拷锟叫碉拷锟侥憋拷锟斤拷锟斤拷锟叫伙拷锟斤拷*/
+	overflow:hidden;/*锟斤拷锟捷会被锟睫硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟角诧拷锟缴硷拷锟侥★拷*/
+	text-overflow:ellipsis;/*锟斤拷示省锟皆猴拷锟斤拷锟斤拷锟斤拷锟睫硷拷锟斤拷锟侥憋拷*/
 }
 
 .hi_text{
 	width:230px;
 	height: 45px;
 	color: #7b7b7b;
-	overflow:hidden;/*内容会被修剪，并且其余内容是不可见的。*/
-	text-overflow:ellipsis;/*显示省略号来代表被修剪的文本*/
+	overflow:hidden;/*锟斤拷锟捷会被锟睫硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟角诧拷锟缴硷拷锟侥★拷*/
+	text-overflow:ellipsis;/*锟斤拷示省锟皆猴拷锟斤拷锟斤拷锟斤拷锟睫硷拷锟斤拷锟侥憋拷*/
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
@@ -113,4 +106,9 @@
 .notice_con ul li a:hover{
 	text-decoration: none; 
 	color: #FF2832;
+}
+.page{
+    margin-top: 47px;
+    margin-right: 646px;
+    float: right;
 }

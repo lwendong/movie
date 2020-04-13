@@ -1,6 +1,8 @@
 package com.movie.service.admin;
 
 
+import java.util.List;
+
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,7 +15,7 @@ public interface MovieService {
 	
 	public String toAddMovie(Model model);
 	
-	public JSONObject selectMovieByPage(Integer pageNo);
+	public JSONObject selectMovieByPage(Integer pageNo, String code, String myKey);
 	
 	public JSONObject deleteMovies(String[] movieIds);
 	
@@ -22,4 +24,11 @@ public interface MovieService {
 	public String movieDetails(String movieId,Model model);
 	
 	public String addOrUpdateMovie(Movie movie, MultipartFile file);
+	
+	public List<Movie> selectMovieByType(Model model,Integer pageNo,String typeCode);
+	
+	public List<Movie> selectMovieByPageIndex(Model model,Integer pageNo, String code, String myKey);
+	
+	public String search(Model model,String mykey);
+	
 }

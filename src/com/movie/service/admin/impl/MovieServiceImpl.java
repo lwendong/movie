@@ -43,7 +43,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public String toMovie(Model model, Integer pageNo) {
-		JSONObject json = selectMovieByPage(pageNo);
+		JSONObject json = selectMovieByPage(pageNo,null,null);
 		List<Movie> list = (List<Movie>) json.get("allMovie");
 		model.addAttribute("allMovie", list); 
 		model.addAttribute("pageNo", pageNo);
@@ -52,20 +52,19 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public JSONObject selectMovieByPage(Integer pageNo) {
+	public JSONObject selectMovieByPage(Integer pageNo ,String code, String myKey) {
 		JSONObject jsonObject = new JSONObject();
 		PageInfo pageInfo = new PageInfo(pageNo,10);
-		List<Movie> movieList = movieDao.selectMovieByPage(pageInfo); 
+		List<Movie> movieList = movieDao.selectMovieByPage(pageInfo,code,myKey); 
 		movieList.forEach(movie ->{
 			Date releaseDate = movie.getReleaseTime();
 			long nowTime = new Date().getTime();
 			long releaseTime = releaseDate.getTime();
 			movie.setPlay(nowTime >= releaseTime?1:0);
 		});
-		Integer num =movieDao.selectMovieCount(pageInfo); 
 		jsonObject.put("allMovie", movieList);
 		jsonObject.put("pageNo", pageNo); 
-		jsonObject.put("totalPage", num);
+		jsonObject.put("totalPage", movieList.size());
 		return jsonObject;
 	}
 
@@ -141,5 +140,36 @@ public class MovieServiceImpl implements MovieService {
 		model.addAttribute("movieTypeList",movieType);
 		return "admin/addMovie";
 	}
-	
+
+	@Override
+	public List<Movie> selectMovieByType(Model model, Integer pageNo, String typeCode) {
+		PageInfo pageInfo = new PageInfo(pageNo, 10);
+		return movieDao.selectMovieByType(pageInfo,typeCode);
+	}
+
+	@Override
+	public String search(Model model,String mykey) {
+		List<Movie> movieList = null;
+		if(StringUtils.isNotEmpty(mykey)) {
+			movieList = movieDao.search(mykey);
+			movieList.forEach(movie ->{
+				Date releaseDate = movie.getReleaseTime();
+				long nowTime = new Date().getTime();
+				long releaseTime = releaseDate.getTime();
+				movie.setPlay(nowTime >= releaseTime?1:0);
+			});
+		}
+		model.addAttribute("searchlist",movieList);
+		return "before/searchResult";
+	}
+
+	@Override
+	public List<Movie> selectMovieByPageIndex(Model model, Integer pageNo, String code, String myKey) {
+		JSONObject json = selectMovieByPage(pageNo,code,myKey);
+		List<Movie> list = (List<Movie>) json.get("allMovie");
+		model.addAttribute("allMovieIndex", list); 
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("totalPage", json.get("totalPage"));
+		return list;
+	}
 }

@@ -6,22 +6,14 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
-<jsp:include page="../public/head.jsp"></jsp:include>
+<jsp:include page="../../page/public/head.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title><spring:message code="home"></spring:message></title>
-<link href="css/before/index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-		function hiddenDiv(){
-			 var tbox=document.getElementById("sale");   
-			 tbox.style.display = tbox.style.display=="none"?"":"none";   
-		}
-		function hiddenPDiv(){
-			 var tbox=document.getElementById("popular");   
-			 tbox.style.display = tbox.style.display=="none"?"":"none";   
-		}
-</script>
+	<title><spring:message code="home"></spring:message></title>
+	<link href="<%=path%>/css/before/index.css" rel="stylesheet" type="text/css" />
+	<script src="<%=path%>/jquery/jquery.min.js"  type="text/javascript"></script>
+	<script src="<%=path%>/js/before/index.js"  type="text/javascript"></script>
 </head>
 <body>
 	<div class="index">
@@ -31,25 +23,56 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 				<div class="new">
 					<div class="new_goods">
 						<ul>
-							<c:forEach items="${lastedlist }" var="sg">
-								<li>
-									<div>
-										<p class="pic">
-											<a href="goodsDetail?id=${sg.id }">
-											<img class="new_show" title="${sg.description}" src="<%=imgPath%>/img/up/${sg.img}" /></a>
-										</p>
-										<p class="wz">
-											<div class="hi">
-												<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
-											</div></br>
-											<div class="hi_text">
-												简介：基本法客户警方未婚夫未必减减肥被u啊u咖啡货币u阿布货物功夫亚非v九九八幅v额纠结啊比uiu拜访给i因违反v与 与高峰v欧阳
-											</div></br>
-											<div class="f2">价格 160.00 | 40  剩余</div>
-										</p>
-									</div>
-								</li>
-							</c:forEach>
+							<c:if test="${movieList == null }">
+								暂时没有影片信息哦 ! !
+							</c:if>
+							<c:if test="${movieList != null }">
+								<c:forEach items="${movieList }" var="sg">
+									<li>
+										<div>
+											<p class="pic">
+												<a href="goodsDetail?id=${sg.id }">
+												<img class="new_show" title="${sg.description}" src="<%=path%>/img/xxx.png.jpg" /></a>
+											</p>
+											<c:if test="${sg.play == 0}">
+												<p class="wz">
+													<div class="hi">
+														<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
+													</div></br>
+													<div class="hi_text">
+														${sg.description}
+													</div></br>
+													<div class="f2">此电影未上映</div>
+													
+												</p>
+											</c:if>
+											<c:if test="${sg.play == 1}">
+												<p class="wz">
+													<div class="hi">
+														<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
+													</div></br>
+													<div class="hi_text">
+														${sg.description}
+													</div></br>
+													<div class="f2">价格 ${sg.price} | ${sg.surplus} 剩余</div>
+												</p>
+											</c:if>
+										</div>
+									</li>
+								</c:forEach>
+							</c:if>
+							<div class="page">
+								&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;第${pageNo}页&nbsp;&nbsp;
+								<!-- 第一页没有上一页 -->
+								<c:if test="${pageNo != null && pageNo != 1 }">
+									<a href="<%=path%>/index/page?pageNo=${pageNo - 1 }">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								</c:if>
+								<!-- 最后一页，没有下一页 -->
+								<c:if test="${totalPage != 0 && totalPage == 10}">
+									<a href="<%=path%>/index/page?pageNo=${pageNo + 1 }">下一页</a>
+								</c:if>
+							</div>
 						</ul>
 					</div>
 				</div>

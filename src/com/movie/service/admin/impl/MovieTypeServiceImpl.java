@@ -53,4 +53,9 @@ public class MovieTypeServiceImpl implements MovieTypeService {
 		return jsonObject;
 	}
 
+	@Override
+	public List<MovieType> selectType() {
+		return movieTypeDao.selectType();
+	}
+
 }

@@ -2,8 +2,10 @@ package com.movie.pojo;
 
 import java.util.Date;
 
-public class Ticket {
+public class Ticket extends BaseModel{
 	
+	private static final long serialVersionUID = 1L;
+
 	private String id;
 	
 	private Boolean type;
