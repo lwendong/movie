@@ -15,4 +15,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectByTel" resultType="user" parameterType="string">
 		select * from user where tel = #{tel} 
 	</select>
+	
+	<select id="selectById" resultType="user" parameterType="string">
+		select * from user where id = #{id} 
+	</select>
 </mapper>

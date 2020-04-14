@@ -108,7 +108,12 @@
 	color: #FF2832;
 }
 .page{
-    margin-top: 47px;
     margin-right: 646px;
+    margin-top: 25px;
     float: right;
+}
+.movie_show{
+	width:100%;
+	height: auto;
+	min-height:500px;
 }

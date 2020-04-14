@@ -3,6 +3,8 @@ package com.movie.service.admin.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import com.movie.pojo.Comment;
 import com.movie.pojo.Movie;
 import com.movie.pojo.PageInfo;
 import com.movie.service.admin.CommentService;
+import com.movie.util.MyUtil;
 
 @Service("commentService")
 public class CommentServiceImpl implements CommentService {
@@ -46,6 +49,19 @@ public class CommentServiceImpl implements CommentService {
 	public JSONObject deleteOneComment(String commentId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("success", commentDao.deleteOneComment(commentId) > 0);
+		return jsonObject;
+	}
+
+	@Override
+	public List<Comment> selectCommentByMovieId(String movieId) {
+		return commentDao.selectCommentByMovieId(movieId);
+	}
+	
+	@Override
+	public JSONObject addComment(HttpSession session,String movieId, String comment) {
+		JSONObject jsonObject = new JSONObject();
+		String userId = MyUtil.getUserId(session);
+		jsonObject.put("success", commentDao.addComment(movieId,comment,userId));
 		return jsonObject;
 	}
 }

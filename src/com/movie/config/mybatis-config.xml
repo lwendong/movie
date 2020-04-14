@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	 <mappers>
         <!-- <mapper resource="mapper/admin/AdminGoodsMapper.xml"/> -->
         <mapper resource="com/movie/mapper/before/UserMapper.xml"/>
+        <mapper resource="com/movie/mapper/before/UserCenterMapper.xml"/>
         <mapper resource="com/movie/mapper/admin/MovieTypeMapper.xml"/>
         <mapper resource="com/movie/mapper/admin/MovieMapper.xml"/>
         <mapper resource="com/movie/mapper/admin/NoticeMapper.xml"/>

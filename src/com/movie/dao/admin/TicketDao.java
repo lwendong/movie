@@ -16,4 +16,10 @@ public interface TicketDao {
 	public List<Ticket> selectTicketByPage(@Param("page") PageInfo page);
 	
 	public Integer selectTicketCount(@Param("page") PageInfo page);
+	
+	public Integer buy(@Param("movieId") String movieId, @Param("num") Integer num, @Param("userId") String userId);
+	
+	public List<Ticket> selectTicketByMovieIdAndUserId(@Param("userId") String userId,@Param("movieId") String movieId);
+	
+	
 }

@@ -16,8 +16,6 @@ public class User extends BaseModel{
 	
 	private String password;
 	
-	private String headPhoto;
-	
 	private String sex;
 	
 	private String age;
@@ -68,14 +66,6 @@ public class User extends BaseModel{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getHeadPhoto() {
-		return headPhoto;
-	}
-
-	public void setHeadPhoto(String headPhoto) {
-		this.headPhoto = headPhoto;
 	}
 
 	public String getSex() {

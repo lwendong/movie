@@ -10,6 +10,8 @@ public class Comment extends BaseModel{
 	
 	private String userId;
 	
+	private String userName;
+	
 	private String movieId;
 	
 	private String comment;
@@ -17,6 +19,8 @@ public class Comment extends BaseModel{
 	private Date time;
 	
 	private Boolean deleted;
+	
+	private String movieName;
 
 	public String getId() {
 		return id;
@@ -64,6 +68,22 @@ public class Comment extends BaseModel{
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
+	}
+
+	public String getMovieName() {
+		return movieName;
+	}
+
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
 }

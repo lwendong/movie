@@ -22,14 +22,18 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 					
 					<ul>
 						<li class="user_a">
-							<c:if test="${user!=null}"><spring:message code="welcome"></spring:message> ${user.name }</c:if>
-							<c:if test="${user==null}"><a href="toLogin"><spring:message code="login"></spring:message></a></c:if> |
+							<c:if test="${user!=null}">欢迎  ${user.name }</c:if>
+							<c:if test="${user==null}"><a href="<%=path%>/tologin">登录</a></c:if> |
 						</li>
 						<li class="user_a">
-							&nbsp;<a href="toRegister"><spring:message code="register"></spring:message></a> |
+							<c:if test="${user==null}">
+								&nbsp;<a href="<%=path%>/toregister">注册</a> |
+							</c:if>
 						</li>
 						<li class="user_a">
-							&nbsp;<a href="userControllerCenter"><spring:message code="userCenter"></spring:message></a> |
+							<c:if test="${user!=null}">
+								&nbsp;<a href="<%=path%>/userCenter/userCenterControl">用户中心</a> |
+							</c:if>
 						</li>
 						<li class="user_a">
 							&nbsp;
@@ -37,7 +41,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 							  <button class="dropbtn">公告</button>
 							  <span class="dropdown-content">
 							  	<c:forEach items="${noticeList}" var="nt">
-									<a class="hii" href="javascript:openNotice('admin/notice/noticeDetailsForBefore?noticeId=${nt.id }');" title="${nt.title }">${nt.title }</a>
+									<a class="hii" href="javascript:openNotice('<%=path%>/admin/notice/noticeDetailsForBefore?noticeId=${nt.id }');" title="${nt.title }">${nt.title }</a>
 								</c:forEach>
 							    
 							  </span>
@@ -46,7 +50,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 						
 					</ul>
 					<c:if test="${user!= null}">	
-						<div class="exit"><a href="user/exit"><spring:message code="exit"></spring:message></a></div>
+						<div class="exit"><a href="<%=path%>/user/exit"><spring:message code="exit"></spring:message></a></div>
 					</c:if>
 				</div>
 			</div>
@@ -61,7 +65,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 				<!-- 搜索 -->
 				<div class="search_goods">
 					<div class="eye"><img alt="" src="<%=path%>/img/eye.png" /></div>
-					<form name="form" action="search" method="post">
+					<form name="form" action="<%=path%>/search" method="post">
 						<div class="input_text">
 							<input class="search_input" type="text" name="mykey" placeholder="请输入您要查询的影片名称" onfocus="clearValue()">
 						</div>
@@ -70,16 +74,18 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 						</div>
 					</form>
 				</div>
-				<!-- 购物车 -->
-				<div class="cart">
-					<a href="JavaScript:jump()"><input class="cart_button" type="button" name="cart" value="购票信息"></a>
-					<div class="catr_img"><img class="img_c" src="<%=path%>/img/cart.png" alt=""/></div>
-				</div>
+				<c:if test="${user!=null}">
+					<!-- 购物车 -->
+					<div class="cart">
+						<a href="JavaScript:jump()"><input class="cart_button" type="button" name="cart" value="购票信息"></a>
+						<div class="catr_img"><img class="img_c" src="<%=path%>/img/cart.png" alt=""/></div>
+					</div>
+				</c:if>
 				
 				<!-- 导航条 -->
 				<div class="navigation">
 					<ul>
-						<li class="home"><a href="toindex">首页</a></li>
+						<li class="home"><a href="<%=path%>/toindex">首页</a></li>
 						<!-- 显示商品类型 -->
 						<c:forEach items="${movieTypeList}" var="g">
 							<li class="ification">

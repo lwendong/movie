@@ -19,31 +19,35 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 		<div class="index_center_middle">
 			<div class="new">
 					<div class="new_goods">
-						<ul>
-							<c:forEach items="${movieByType }" var="sg">
-								<li>
-										<div>
-											<p class="pic">
-												<a href="goodsDetail?id=${sg.id }">
-												<img class="new_show" title="${sg.description}" src="img/xxx.png.jpg" /></a>
-											</p>
-											<p class="wz">
-												<div class="hi">
-													<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
-												</div></br>
-												<div class="hi_text">
-													${sg.description}
-												</div></br>
-												<c:if test="${sg.play == 0}">
-													<div class="f2">此电影未上映</div>
-												</c:if>
-												<c:if test="${sg.play != 0}">
-													<div class="f2">价格 ${sg.price} | ${sg.surplus} 剩余</div>
-												</c:if>
-											</p>
-										</div>
-									</li>
-							</c:forEach>
+						<div class="movie_show">
+							<ul>
+								<c:forEach items="${movieByType }" var="sg">
+									<li>
+											<div>
+												<p class="pic">
+													<a href="goodsDetail?id=${sg.id }">
+													<img class="new_show" title="${sg.description}" src="img/xxx.png.jpg" /></a>
+												</p>
+												<p class="wz">
+													<div class="hi">
+														<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
+													</div></br>
+													<div class="hi_text">
+														${sg.description}
+													</div></br>
+													<c:if test="${sg.play == 0}">
+														<div class="f2">此电影未上映</div>
+													</c:if>
+													<c:if test="${sg.play != 0}">
+														<div class="f2">价格 ${sg.price} | ${sg.surplus} 剩余</div>
+													</c:if>
+												</p>
+											</div>
+										</li>
+								</c:forEach>
+							</ul>
+						</div>
+						<c:if test="${movieByType!=null}">
 							<div class="page">
 								&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;第${pageNo}页&nbsp;&nbsp;
@@ -56,9 +60,9 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 									<a href="<%=path%>/index/page?pageNo=${pageNo + 1 }&typeCode=${movieType }">下一页</a>
 								</c:if>
 							</div>
-						</ul>
-					</div>
+						</c:if>
 				</div>
+			</div>
 		</div>
 	</div>
 </div>

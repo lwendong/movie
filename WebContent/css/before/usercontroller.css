@@ -1,0 +1,50 @@
+/*�û����ĵ����div*/
+.list{
+	width: 100%;
+}
+/*��ɫ��*/
+.line{
+	width:2060px;
+	height:50px;
+	background-color: #FF2832;
+	margin-left:-500px;
+}
+/*��������ģ�����div*/
+.list-group{
+	width:1200px;
+	background-color: white;
+	float: top;
+}
+/*��ģ��  Ŀ¼*/
+.list-top{
+	margin-left: 130px;
+}
+/*ul�б�����*/
+/*������ҳ����*/
+.list_return{
+	float: left;
+	height:50px;
+	text-align: center;
+	list-style:none;
+	padding-top:10px;
+}
+.list_li{
+	float: left;
+	height:35px;
+	width: 245px;
+	font-size:18px;
+	text-align: center;
+	list-style:none;
+	padding-top:15px;
+	color: #fff;
+}
+/*Ŀ¼����������*/
+.list-top ul li a:link,.list-top ul li a:visited{
+	color: #fff;
+	text-decoration: none;
+}
+.page{
+	float:right;
+	margin-right: 11px;
+    margin-top: 15px;
+}

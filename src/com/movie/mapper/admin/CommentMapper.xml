@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <resultMap type="com.movie.pojo.Comment" id="commentModel">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
         <result column="movie_id" property="movieId"/>
         <result column="comment" property="comment"/>
         <result column="time" property="time"/>
@@ -20,8 +21,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(1) from comment where deleted = 0 limit #{page.pageNo},#{page.pageSize} 
 	</select>
 	
+	<select id="selectCommentByMovieId"  resultMap="commentModel" parameterType="string">
+		select *,u.name as user_name from comment c left join user u on c.user_id = u.id where deleted = 0 and movie_id = #{commentId} order by c.time  
+	</select>
+	
 	<update id="deleteOneComment" parameterType="string">
 		update comment set deleted = 1 where id = #{commentId}
 	</update>
 	
+	<insert id="addComment">
+		insert into comment values(replace(uuid(),"-",""),#{userId},#{movieId},#{comment},now(),0)
+	</insert>
 </mapper>

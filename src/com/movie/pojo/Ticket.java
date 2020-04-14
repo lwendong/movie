@@ -17,6 +17,14 @@ public class Ticket extends BaseModel{
 	private Integer num;
 	
 	private Date time;
+	
+	private String movieName;
+	
+	private String moviePrice;
+	
+	private String movieTime;
+	
+	private String movieDescription;
 
 	public String getId() {
 		return id;
@@ -64,6 +72,38 @@ public class Ticket extends BaseModel{
 
 	public void setTime(Date time) {
 		this.time = time;
+	}
+
+	public String getMovieName() {
+		return movieName;
+	}
+
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
+
+	public String getMoviePrice() {
+		return moviePrice;
+	}
+
+	public void setMoviePrice(String moviePrice) {
+		this.moviePrice = moviePrice;
+	}
+
+	public String getMovieTime() {
+		return movieTime;
+	}
+
+	public void setMovieTime(String movieTime) {
+		this.movieTime = movieTime;
+	}
+
+	public String getMovieDescription() {
+		return movieDescription;
+	}
+
+	public void setMovieDescription(String movieDescription) {
+		this.movieDescription = movieDescription;
 	}
 	
 }

@@ -15,4 +15,6 @@ public interface UserDao {
 	public int insertUser(@Param("user") User user);
 	
 	public User selectByTel(@Param("tel") String tel);
+	
+	public User selectById(@Param("id") String id);
 }

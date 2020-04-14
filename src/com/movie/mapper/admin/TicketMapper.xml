@@ -20,4 +20,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(1) from ticket  limit #{page.pageNo},#{page.pageSize} 
 	</select>
 	
+	<select id="selectTicketByMovieIdAndUserId"  resultMap="ticketModel" >
+		select * from ticket where user_id = #{userId} and movie_id = #{movieId}  and type = 0
+	</select>
+	
+	<insert id="buy">
+		insert into ticket values(replace(uuid(),"-",""),0,#{userId},#{movieId},#{num},now())
+	</insert>
+	
 </mapper>

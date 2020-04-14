@@ -64,7 +64,7 @@ public class MovieServiceImpl implements MovieService {
 		});
 		jsonObject.put("allMovie", movieList);
 		jsonObject.put("pageNo", pageNo); 
-		jsonObject.put("totalPage", movieList.size());
+		jsonObject.put("totalPage", movieList !=null?movieList.size():0);
 		return jsonObject;
 	}
 
@@ -171,5 +171,15 @@ public class MovieServiceImpl implements MovieService {
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("totalPage", json.get("totalPage"));
 		return list;
+	}
+
+	@Override
+	public Movie selectMovieById(String movieId) {
+		return movieDao.selectMovieById(movieId);
+	}
+
+	@Override
+	public void updateMovieNum(String movieId, Integer num) {
+		movieDao.updateMovieNum(movieId,num);
 	}
 }

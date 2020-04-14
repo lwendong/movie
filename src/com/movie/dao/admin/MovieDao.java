@@ -33,4 +33,8 @@ public interface MovieDao {
 	
 	public List<Movie> search(@Param("mykey") String mykey);
 	
+	public Movie selectMovieById(@Param("movieId") String movieId);
+	
+	public Integer updateMovieNum(@Param("movieId") String movieId,@Param("num") Integer num);
+	
 }

@@ -31,4 +31,8 @@ public interface MovieService {
 	
 	public String search(Model model,String mykey);
 	
+	public Movie selectMovieById(String movieId);
+	
+	public void updateMovieNum(String movieId, Integer num);
+	
 }

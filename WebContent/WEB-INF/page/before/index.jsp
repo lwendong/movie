@@ -22,45 +22,49 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 				<!-- 所有电影 -->
 				<div class="new">
 					<div class="new_goods">
-						<ul>
-							<c:if test="${movieList == null }">
-								暂时没有影片信息哦 ! !
-							</c:if>
-							<c:if test="${movieList != null }">
-								<c:forEach items="${movieList }" var="sg">
-									<li>
-										<div>
-											<p class="pic">
-												<a href="goodsDetail?id=${sg.id }">
-												<img class="new_show" title="${sg.description}" src="<%=path%>/img/xxx.png.jpg" /></a>
-											</p>
-											<c:if test="${sg.play == 0}">
-												<p class="wz">
-													<div class="hi">
-														<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
-													</div></br>
-													<div class="hi_text">
-														${sg.description}
-													</div></br>
-													<div class="f2">此电影未上映</div>
-													
+						<div class="movie_show">
+							<ul>
+								<c:if test="${movieList == null }">
+									暂时没有影片信息哦 ! !
+								</c:if>
+								<c:if test="${movieList != null }">
+									<c:forEach items="${movieList }" var="sg">
+										<li>
+											<div>
+												<p class="pic">
+													<a href="<%=path%>/movieDetail?movieId=${sg.id }">
+													<img class="new_show" title="${sg.description}" src="<%=path%>/img/1.jpg" /></a>
 												</p>
-											</c:if>
-											<c:if test="${sg.play == 1}">
-												<p class="wz">
-													<div class="hi">
-														<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
-													</div></br>
-													<div class="hi_text">
-														${sg.description}
-													</div></br>
-													<div class="f2">价格 ${sg.price} | ${sg.surplus} 剩余</div>
-												</p>
-											</c:if>
-										</div>
-									</li>
-								</c:forEach>
-							</c:if>
+												<c:if test="${sg.play == 0}">
+													<p class="wz">
+														<div class="hi">
+															<a href="<%=path%>/movieDetail?movieId=${sg.id }">${sg.name }</a>
+														</div></br>
+														<div class="hi_text">
+															${sg.description}
+														</div></br>
+														<div class="f2">此电影未上映</div>
+														
+													</p>
+												</c:if>
+												<c:if test="${sg.play == 1}">
+													<p class="wz">
+														<div class="hi">
+															<a href="<%=path%>/movieDetail?movieId=${sg.id }">${sg.name }</a>
+														</div></br>
+														<div class="hi_text">
+															${sg.description}
+														</div></br>
+														<div class="f2">价格 ${sg.price} | ${sg.surplus} 剩余</div>
+													</p>
+												</c:if>
+											</div>
+										</li>
+									</c:forEach>
+								</c:if>
+							</ul>
+						</div>
+						<c:if test="${movieList != null }">
 							<div class="page">
 								&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;第${pageNo}页&nbsp;&nbsp;
@@ -73,7 +77,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 									<a href="<%=path%>/index/page?pageNo=${pageNo + 1 }">下一页</a>
 								</c:if>
 							</div>
-						</ul>
+						</c:if>
 					</div>
 				</div>
 			</div>

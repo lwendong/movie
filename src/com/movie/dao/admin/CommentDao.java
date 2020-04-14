@@ -18,4 +18,8 @@ public interface CommentDao {
 	public Integer selectCommentCount(@Param("page") PageInfo page);
 	
 	public Integer deleteOneComment(@Param("commentId") String commentId);
+	
+	public List<Comment> selectCommentByMovieId(@Param("commentId") String commentId);
+	
+	public Integer addComment(@Param("movieId") String movieId,@Param("comment") String comment,@Param("userId") String userId);
 }

@@ -25,10 +25,15 @@ public class UserController {
 		return userService.login(user,session);
 	}
 	
-	
 	@RequestMapping("/register")
 	@ResponseBody
 	public JSONObject register(@RequestBody User user,HttpSession session) {
 		return userService.register(user,session);
+	}
+	
+	@RequestMapping("/exit")
+	public String exit(HttpSession session) {
+		session.invalidate();
+		return "redirect:/toindex";
 	}
 }

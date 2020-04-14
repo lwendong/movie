@@ -33,5 +33,7 @@ public class PageInfo extends BaseModel{
 		this.pageSize = pageSize;
 	}
 	
-	
+	public Integer nextPage() {
+		return this.pageNo + this.pageSize;
+	}
 }

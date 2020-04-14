@@ -78,9 +78,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select m.*,t.name as type_name,t.code as type_code from movie m left join type t on m.type_code = t.code where m.deleted = 0 and m.type_code = #{typeCode} order by m.time desc limit #{page.pageNo},#{page.pageSize} 
 	</select>
 	
-	<!-- 首页搜索 -->
 	<select id="search" resultMap="movieModel" parameterType="String">
 		select * from movie where name like concat('%',#{mykey},'%') and deleted = 0
 	</select>
+	
+	<select id="selectMovieById" resultMap="movieModel" parameterType="String">
+		select m.*,t.name as type_name from movie m left join type t on m.type_code = t.code where m.id = #{movieId} and m.deleted = 0
+	</select>
+	
+	<update id="updateMovieNum">
+		update movie set surplus = surplus - #{num} where id = #{movieId}
+	</update>
 	
 </mapper>

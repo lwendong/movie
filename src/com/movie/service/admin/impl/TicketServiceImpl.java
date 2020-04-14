@@ -2,6 +2,8 @@ package com.movie.service.admin.impl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import com.movie.pojo.Comment;
 import com.movie.pojo.PageInfo;
 import com.movie.pojo.Ticket;
 import com.movie.service.admin.TicketService;
+import com.movie.util.MyUtil;
 
 @Service("ticketService")
 public class TicketServiceImpl implements TicketService {
@@ -41,5 +44,15 @@ public class TicketServiceImpl implements TicketService {
 		return jsonObject;
 	}
 
+	@Override
+	public List<Ticket> selectTicketByMovieIdAndUserId(String userId, String movieId) {
+		return ticketDao.selectTicketByMovieIdAndUserId(userId,movieId);
+	}
+
+	@Override
+	public void buy(HttpSession session,String movieId, Integer num) {
+		ticketDao.buy(movieId, num,MyUtil.getUserId(session));
+		
+	}
 
 }
