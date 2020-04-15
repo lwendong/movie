@@ -57,7 +57,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 							<fmt:formatDate value="${ce.time}" pattern="yyyy-MM-dd HH:mm:ss" />
 						</td>
 						<td class="goods_info_185">
-							<a class="a_text" style="text-decoration: none;" href="<%=path%>/userCenter/refund?id=${ce.id}&pageNo=${pageNo}" onClick="return confirm('确定退票吗?');" title="退票">
+							<a class="a_text" style="text-decoration: none;" href="<%=path%>/userCenter/refund?id=${ce.id}&pageNo=${pageNo}&num=${ce.num}" onClick="return confirm('确定退票吗?');" title="退票">
 							退票
 							</a>
 						</td>

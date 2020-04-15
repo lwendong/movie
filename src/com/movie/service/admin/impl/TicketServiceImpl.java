@@ -55,4 +55,9 @@ public class TicketServiceImpl implements TicketService {
 		
 	}
 
+	@Override
+	public Ticket selectTicketById(String id, Integer type) {
+		return ticketDao.selectTicketById(id,type);
+	}
+
 }

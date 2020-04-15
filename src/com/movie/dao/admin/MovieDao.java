@@ -35,6 +35,6 @@ public interface MovieDao {
 	
 	public Movie selectMovieById(@Param("movieId") String movieId);
 	
-	public Integer updateMovieNum(@Param("movieId") String movieId,@Param("num") Integer num);
+	public Integer updateMovieNum(@Param("movieId") String movieId,@Param("num") Integer num,@Param("type") Integer type);
 	
 }

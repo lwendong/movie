@@ -108,7 +108,7 @@ public class PageServiceImpl implements PageService{
 	@Override
 	public String buy(HttpSession session, String movieId, Integer num) {
 		ticketService.buy(session,movieId, num);
-		movieService.updateMovieNum(movieId, num);
+		movieService.updateMovieNum(movieId, num,0);
 		return "redirect:/movieDetail?movieId="+movieId;
 	}
 

@@ -19,4 +19,6 @@ public interface TicketService {
 	
 	public void buy(HttpSession session,String movieId, Integer num);
 	
+	public Ticket selectTicketById(String id,Integer type);
+	
 }

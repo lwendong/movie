@@ -16,6 +16,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from ticket order by time desc limit #{page.pageNo},#{page.pageSize} 
 	</select>
 	
+	<select id="selectTicketById"  resultMap="ticketModel" >
+		select * from ticket where id = #{id} and type = #{type}
+	</select>
+	
 	<select id="selectTicketCount"  resultType="Integer" parameterType="page">
 		select count(1) from ticket  limit #{page.pageNo},#{page.pageSize} 
 	</select>

@@ -17,6 +17,8 @@ import com.movie.pojo.Comment;
 import com.movie.pojo.PageInfo;
 import com.movie.pojo.Ticket;
 import com.movie.pojo.User;
+import com.movie.service.admin.MovieService;
+import com.movie.service.admin.TicketService;
 import com.movie.service.before.UserCenterService;
 import com.movie.util.MyUtil;
 
@@ -30,6 +32,12 @@ public class UserCenterServiceImpl implements UserCenterService{
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private MovieService movieService;
+	
+	@Autowired
+	private TicketService ticketService;
 	
 	@Override
 	public String userCenter(HttpSession session, Model model) {
@@ -70,7 +78,9 @@ public class UserCenterServiceImpl implements UserCenterService{
 
 	@Override
 	public String refund(HttpSession session, Model model, String id,Integer pageNo) {
+		Ticket ticket = ticketService.selectTicketById(id,0);
 		userCenterDao.refund(id);
+		movieService.updateMovieNum(ticket.getMovieId(),ticket.getNum(),1);
 		return userMyBuy(session,model,pageNo);
 	}
 

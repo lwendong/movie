@@ -87,7 +87,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="updateMovieNum">
-		update movie set surplus = surplus - #{num} where id = #{movieId}
+		update movie set 
+		<if test="type == 1 ">
+			   surplus = surplus + #{num} 
+		</if>
+		
+		<if test="type == 0 ">
+			  surplus = surplus - #{num} 
+		</if>
+		where id = #{movieId}
 	</update>
 	
 </mapper>

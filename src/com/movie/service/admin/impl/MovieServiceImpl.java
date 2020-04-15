@@ -179,7 +179,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public void updateMovieNum(String movieId, Integer num) {
-		movieDao.updateMovieNum(movieId,num);
+	public void updateMovieNum(String movieId, Integer num,Integer type) {
+		movieDao.updateMovieNum(movieId,num,type);
 	}
 }

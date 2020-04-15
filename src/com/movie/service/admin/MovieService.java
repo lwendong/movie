@@ -33,6 +33,6 @@ public interface MovieService {
 	
 	public Movie selectMovieById(String movieId);
 	
-	public void updateMovieNum(String movieId, Integer num);
+	public void updateMovieNum(String movieId, Integer num,Integer type);
 	
 }
