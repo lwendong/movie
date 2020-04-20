@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.movie.dao.admin.TicketDao;
@@ -34,13 +35,16 @@ public class TicketServiceImpl implements TicketService {
 
 	@Override
 	public JSONObject selectTicketByPage(Integer pageNo) {
+		Integer totalPage = 0;
 		JSONObject jsonObject = new JSONObject();
 		PageInfo pageInfo = new PageInfo(pageNo,10);
 		List<Ticket> movieList = ticketDao.selectTicketByPage(pageInfo); 
-		Integer num = ticketDao.selectTicketCount(pageInfo); 
+		if(!CollectionUtils.isEmpty(movieList)) {
+			totalPage = ticketDao.selectTicketCount(pageInfo.nextPage(),pageInfo.getPageSize()); 
+		}
 		jsonObject.put("allTickets", movieList);
 		jsonObject.put("pageNo", pageNo); 
-		jsonObject.put("totalPage", num);
+		jsonObject.put("totalPage", totalPage);
 		return jsonObject;
 	}
 

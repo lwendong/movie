@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
+%>
 <jsp:include page="../../page/public/head.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,9 +47,8 @@
 				<c:forEach items="${searchlist }" var="mf">
 					<tr>
 						<td bgcolor="#ffffff" align="center">${mf.name }</td>
-						<td align="center" bgcolor="#ffffff" height="60px"><img
-							style="width: 50px; height: 50px;"
-							src="img/xxx.png.jpg" border="0" title="${mf.description }" />
+						<td align="center" bgcolor="#ffffff" height="60px">
+						<img style="width: 50px; height: 50px;" src="<%=imgPath%>/img/${mf.img }" border="0" title="${mf.description }" />
 						</td>
 						<td bgcolor="#ffffff" align="center">${mf.price }</td>
 						<td bgcolor="#ffffff" align="center">${mf.surplus }</td>

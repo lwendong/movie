@@ -19,7 +19,7 @@ public interface MovieTypeDao {
 	
 	public List<MovieType> selectTypeByPage(@Param("page") PageInfo page);
 	
-	public Integer selectTypeCount(@Param("page") PageInfo page);
+	public Integer selectTypeCount(@Param("pageNo") Integer pageNo,@Param("pageSize") Integer pageSize);
 	 
 	public Integer deleteType(@Param("typeId") String typeId);
 	

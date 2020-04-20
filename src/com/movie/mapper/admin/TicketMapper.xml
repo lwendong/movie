@@ -20,8 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from ticket where id = #{id} and type = #{type}
 	</select>
 	
-	<select id="selectTicketCount"  resultType="Integer" parameterType="page">
-		select count(1) from ticket  limit #{page.pageNo},#{page.pageSize} 
+	<select id="selectTicketCount"  resultType="Integer" >
+	select count(1) from (select 1 from ticket  limit #{pageNo},#{pageSize} ) temp
 	</select>
 	
 	<select id="selectTicketByMovieIdAndUserId"  resultMap="ticketModel" >

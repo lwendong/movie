@@ -12,8 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from type where deleted = 0  order by time desc limit #{page.pageNo},#{page.pageSize} 
 	</select>
 	
-	<select id="selectTypeCount"  resultType="Integer" parameterType="page">
-		select count(1) from type where deleted = 0  limit #{page.pageNo},#{page.pageSize} 
+	<select id="selectTypeCount"  resultType="Integer">
+		
+		select count(1) from (select 1 from type where deleted = 0  limit #{pageNo},#{pageSize} ) temp
 	</select>
 	
 	<update id="deleteType"  parameterType="string">

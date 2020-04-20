@@ -39,7 +39,7 @@
 						<td>${movie.typeName }</td>
 						<td><fmt:formatDate value="${movie.releaseTime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td>${movie.playPlace }</td>
-						<td><img alt="" width="50" height="50" src="/img/up/${movie.img}"/></td>
+						<td><img alt="" width="50" height="50" src="/img/${movie.img}"/></td>
 						<td>
 							<c:if test="${movie.play == 1}">是</c:if>
 							<c:if test="${movie.play == 0}">否</c:if>
@@ -62,7 +62,7 @@
 					<a href="../../admin/movie/page?pageNo=${pageNo - 1 }">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 				</c:if>
 				<!-- 最后一页，没有下一页 -->
-				<c:if test="${totalPage != 0 && totalPage == 10}">
+				<c:if test="${totalPage != null && totalPage != 0}">
 					<a href="../../admin/movie/page?pageNo=${pageNo + 1 }">下一页</a>
 				</c:if>
 			</div>

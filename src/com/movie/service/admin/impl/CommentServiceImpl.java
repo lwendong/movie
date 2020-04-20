@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.movie.dao.admin.CommentDao;
@@ -35,13 +36,16 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public JSONObject selectCommentByPage(Integer pageNo) {
+		Integer totalPage = 0;
 		JSONObject jsonObject = new JSONObject();
 		PageInfo pageInfo = new PageInfo(pageNo,10);
-		List<Comment> movieList = commentDao.selectCommentByPage(pageInfo); 
-		Integer num = commentDao.selectCommentCount(pageInfo); 
-		jsonObject.put("allComments", movieList);
+		List<Comment> commentList = commentDao.selectCommentByPage(pageInfo); 
+		if(!CollectionUtils.isEmpty(commentList)) {
+			totalPage = commentDao.selectCommentCount(pageInfo.nextPage(),pageInfo.getPageSize()); 
+		}
+		jsonObject.put("allComments", commentList);
 		jsonObject.put("pageNo", pageNo); 
-		jsonObject.put("totalPage", num);
+		jsonObject.put("totalPage", totalPage);
 		return jsonObject;
 	}
 

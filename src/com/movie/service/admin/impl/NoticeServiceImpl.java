@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.movie.dao.admin.NoticeDao;
@@ -32,13 +33,16 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public JSONObject selectNoticeByPage(Integer pageNo) {
+		Integer totalPage = 0;
 		JSONObject jsonObject = new JSONObject();
 		PageInfo pageInfo = new PageInfo(pageNo,10);
 		List<Notice> movieList = noticeDao.selectNoticeByPage(pageInfo); 
-		Integer num = noticeDao.selectNoticeCount(pageInfo); 
+		if(!CollectionUtils.isEmpty(movieList)) {
+			totalPage = noticeDao.selectNoticeCount(pageInfo.nextPage(),pageInfo.getPageSize()); 
+		}
 		jsonObject.put("allNotices", movieList);
 		jsonObject.put("pageNo", pageNo); 
-		jsonObject.put("totalPage", num);
+		jsonObject.put("totalPage", totalPage);
 		return jsonObject;
 	}
 

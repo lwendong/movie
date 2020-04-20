@@ -46,17 +46,20 @@ public class PageServiceImpl implements PageService{
 
 	@Override
 	public String selectMovieByType(Model model, Integer pageNo, String typeCode) {
-		List<Movie> movieList = movieService.selectMovieByType(model,pageNo,typeCode);
-		movieList.forEach(movie ->{
-			Date releaseDate = movie.getReleaseTime();
-			long nowTime = new Date().getTime();
-			long releaseTime = releaseDate.getTime();
-			movie.setPlay(nowTime >= releaseTime?1:0);
-		});
+		JSONObject jsonObject = movieService.selectMovieByType(model,pageNo,typeCode);
+		List<Movie> movieList = (List<Movie>) jsonObject.get("allMovie");
+		if(!CollectionUtils.isEmpty(movieList)) {
+			movieList.forEach(movie ->{
+				Date releaseDate = movie.getReleaseTime();
+				long nowTime = new Date().getTime();
+				long releaseTime = releaseDate.getTime();
+				movie.setPlay(nowTime >= releaseTime?1:0);
+			});
+		}
 		model.addAttribute("movieByType",CollectionUtils.isEmpty(movieList)?null:movieList);
 		model.addAttribute("movieType",typeCode);
 		model.addAttribute("pageNo", pageNo);
-		model.addAttribute("totalPage", movieList.size());
+		model.addAttribute("totalPage", jsonObject.get("totalPage"));
 		return "before/movietypeshow";
 	}
 

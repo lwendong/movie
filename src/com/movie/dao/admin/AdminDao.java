@@ -16,7 +16,7 @@ public interface AdminDao {
 	
 	public List<User> selectAdminUserByPage(@Param("page") PageInfo page);
 	
-	public Integer selectAdminUserCount(@Param("page") PageInfo page);
+	public Integer selectAdminUserCount(@Param("pageNo") Integer pageNo,@Param("pageSize") Integer pageSize);
 	
 	public Integer userState(String userId);
 }

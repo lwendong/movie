@@ -33,6 +33,12 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 				&nbsp;&nbsp;影片管理&nbsp;&nbsp;&nbsp;&nbsp;>
 			</a>
 		</div>
+		<!-- <div class="manager_goods">
+			<a href="admin/cinema/cinema" target="center">
+				<img alt="" src="img/movieManager.png">
+				&nbsp;&nbsp;影院管理&nbsp;&nbsp;&nbsp;&nbsp;>
+			</a>
+		</div> -->
 		<div class="manager_gType">
 			<a href="admin/type/movietype" target="center">
 				<img alt="" src="img/typeManager.png">

@@ -45,7 +45,7 @@
 				<a href="../../admin/comment/page?pageNo=${pageNo - 1 }" target="center">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 			</c:if>
 			<!-- 最后一页，没有下一页 -->
-			<c:if test="${totalPage != 0 && totalPage == 10}">
+			<c:if test="${totalPage != null && totalPage != 0}">
 				<a href="../../admin/comment/page?pageNo=${pageNo + 1 }" target="center">下一页</a>
 			</c:if>
 		</div>

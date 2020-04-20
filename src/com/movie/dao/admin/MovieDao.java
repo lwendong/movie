@@ -17,7 +17,7 @@ public interface MovieDao {
 	
 	public List<Movie> selectMovieByPage(@Param("page") PageInfo page,@Param("code") String code,@Param("myKey") String myKey);
 	
-	public Integer selectMovieCount();
+	public Integer selectMovieCount(@Param("pageNo") Integer pageNo,@Param("pageSize") Integer pageSize);
 	
 	public Integer deleteMovies(@Param("movieIds") List<String> movieIds);
 	

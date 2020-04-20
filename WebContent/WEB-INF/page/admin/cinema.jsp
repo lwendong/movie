@@ -5,35 +5,35 @@
 <head>
 	<link href="../../css/admin/type.css" type="text/css" rel="stylesheet">
 	<script src="../../jquery/jquery.min.js" type="text/javascript"></script>
-	<script src="../../js/admin/type.js" type="text/javascript"></script>
+	<script src="../../js/admin/cinema.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="outer">
-		<h2>| 类型添加</h2>
-		类型名称: <input id="typeName" class="te" type="text" name="name"/>&nbsp;&nbsp;&nbsp;&nbsp;
-		类型code: <input id="typeCode" class="te" type="text" name="code"/>&nbsp;&nbsp;&nbsp;&nbsp;
-		<input class="but" type="button" value="添加" onclick="addType()"/>
+		<h2>| 影院添加</h2>
+		影院名称: <input id="cinemaName" class="te" type="text" name="name"/>&nbsp;&nbsp;&nbsp;&nbsp;
+		影院code: <input id="cinemaCode" class="te" type="text" name="code"/>&nbsp;&nbsp;&nbsp;&nbsp;
+		<input class="but" type="button" value="添加" onclick="addCinema()"/>
 		<br>
-		<c:if test="${allTypes.size() == 0 }">
-			您还没有类型。
+		<c:if test="${allCinemas.size() == 0 }">
+			您还没有影院信息。
 		</c:if>
-		<c:if test="${allTypes.size() != 0 }">
-			<h2>| 商品类型</h2>
+		<c:if test="${allCinemas.size() != 0 }">
+			<h2>| 影院</h2>
 			<table border="1" >
 				<tr>
-					<th>类型ID</th>
-					<th>类型名称</th>
-					<th>类型code</th>
+					<th>影院ID</th>
+					<th>影院名称</th>
+					<th>影院code</th>
 					<th>删除操作</th>
 				</tr>
-				<c:forEach items="${allTypes }" var="movieType">
+				<c:forEach items="${allCinemas }" var="cinema">
 					<tr>
-						<td>${movieType.id }</td>
-						<td>${movieType.name }</td>
-						<td>${movieType.code }</td>
+						<td>${cinema.id }</td>
+						<td>${cinema.name }</td>
+						<td>${cinema.code }</td>
 						<td>
-							<a href="javascript:void(0);" class="dele" onclick="deleteTy('${movieType.id}')">
-								<img title="删除该类型" alt="" src="../../img/delete.png"/>
+							<a href="javascript:void(0);" class="dele" onclick="deleteTy('${cinema.id}')">
+								<img title="删除该影院" alt="" src="../../img/delete.png"/>
 							</a>
 						</td>
 					</tr>
@@ -47,7 +47,7 @@
 					<a href="../../admin/type/page?pageNo=${pageNo - 1 }">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 				</c:if>
 				<!-- 最后一页，没有下一页 -->
-				<c:if test="${totalPage != null && totalPage != 0}">
+				<c:if test="${totalPage != 0 && totalPage == 8}">
 					<a href="../../admin/type/page?pageNo=${pageNo + 1 }">下一页</a>
 				</c:if>
 			</div>

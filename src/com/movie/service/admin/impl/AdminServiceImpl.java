@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.movie.dao.admin.AdminDao;
@@ -31,13 +32,16 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public JSONObject selectAdminUserByPage(Integer pageNo) {
+		Integer totalPage = 0;
 		JSONObject jsonObject = new JSONObject();
 		PageInfo pageInfo = new PageInfo(pageNo,10);
 		List<User> userList = adminDao.selectAdminUserByPage(pageInfo); 
-		Integer num = adminDao.selectAdminUserCount(pageInfo); 
+		if(!CollectionUtils.isEmpty(userList)) {
+			totalPage = adminDao.selectAdminUserCount(pageInfo.nextPage(),pageInfo.getPageSize()); 
+		}
 		jsonObject.put("allUsers", userList);
 		jsonObject.put("pageNo", pageNo); 
-		jsonObject.put("totalPage", num);
+		jsonObject.put("totalPage", totalPage);
 		return jsonObject;
 	}
 

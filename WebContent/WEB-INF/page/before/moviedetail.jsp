@@ -26,7 +26,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 					<div class="goods">
 						<div class="goodsInfo">
 							<input type="hidden" name="id" value="${movie.id }"/>
-							<img src="<%=path%>/img/1.jpg" width="230px" height="280px" />
+							<img src="<%=imgPath%>/img/${movie.img }" width="230px" height="280px" />
 							<div style="text-align: center;" class="name">
 								<h2>${movie.name }</h2>
 							</div>
@@ -37,6 +37,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 								<ul>
 									<li><span>类型:</span> ${movie.typeName }</li>
 									<li><span>上映时间:  </span><fmt:formatDate value="${movie.releaseTime }" pattern="yyyy-MM-dd HH:mm"/></li>
+									<li><span>上映地点:  </span>${movie.playPlace }</li>
 									<li><span>简介:</span>
 										<div class="ms" title="${movie.description }">
 											${movie.description }
@@ -71,16 +72,21 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 					</div>  
 				</form>
 				<div class="container">
-					<div class="goods_com">商品评价</div>
-   					<c:forEach items="${commentList}" var="comment" varStatus="status">
-	                    <div class="media">
-                             <h3 class="media-heading">${comment.userName}:</h3> 
-                             <p class="middle"><spring:message code="comment"></spring:message>：${comment.comment}</p>
-                             <p>${status.index+1}<spring:message code="tower"></spring:message>&nbsp;&nbsp;
-                             	<fmt:formatDate value="${ comment.time }" pattern="yyyy-MM-dd　HH:mm"/> <spring:message code="published"></spring:message>
-                       		 </p>
-	                    </div>
-	                </c:forEach>
+					<div class="goods_com">影片评价</div>
+					<c:if test="${commentList == null}">
+						暂无评价
+					</c:if>
+					<c:if test="${commentList != null}">
+						<c:forEach items="${commentList}" var="comment" varStatus="status">
+		                    <div class="media">
+	                             <h3 class="media-heading">${comment.userName}:</h3> 
+	                             <p class="middle"><spring:message code="comment"></spring:message>：${comment.comment}</p>
+	                             <p>${status.index+1}<spring:message code="tower"></spring:message>&nbsp;&nbsp;
+	                             	<fmt:formatDate value="${ comment.time }" pattern="yyyy-MM-dd　HH:mm"/> <spring:message code="published"></spring:message>
+	                       		 </p>
+		                    </div>
+		                </c:forEach>
+					</c:if>
 	                <c:if test="${user != null }">
 	                	<div class="write">写评论</div>
 		                <textarea class="com_text" id="textareaComment" rows="3" name="textarea"></textarea>

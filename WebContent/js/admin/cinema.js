@@ -1,18 +1,19 @@
-function addType(){
-	var typeName = $("#typeName").val();
-	var typeCode = $("#typeCode").val();
-	if(typeName == "" || typeCode == ""){
+function addCinema(){
+	debugger
+	var cinemaName = $("#cinemaName").val();
+	var cinemaCode = $("#cinemaCode").val();
+	if(cinemaName == "" || cinemaCode == ""){
 		alert("存在未填项");
 		return false;
 	}
 	$.ajax({
-        url: "../../admin/type/addType",
+        url: "../../admin/cinema/addCinema",
         type: 'post',
         dateType:"json",
         contentType: 'application/json; charset=UTF-8',
         data:JSON.stringify({
-			name:typeName,
-			code:typeCode
+			name:cinemaName,
+			code:cinemaCode
 		}),  
         success: function (data) {
         	if(data.success){
@@ -26,15 +27,15 @@ function addType(){
     });	
 }
 
-function deleteTy(typeId){
+function deleteTy(cinemaId){
 	if(confirm("您确定删除吗?")){
 		$.ajax({
-	        url: "../../admin/type/deleteType",
+	        url: "../../admin/cinema/deleteCinema",
 	        type: 'post',
 	        dateType:"json",
 	        contentType: 'application/json; charset=UTF-8',
 	        data:JSON.stringify({
-				id:typeId
+				id:cinemaId
 			}),  
 	        success: function (data) {
 	        	window.location.reload();

@@ -17,7 +17,7 @@ public interface NoticeDao {
 	
 	public List<Notice> selectNoticeByPage(@Param("page") PageInfo page);
 	
-	public Integer selectNoticeCount(@Param("page") PageInfo page);
+	public Integer selectNoticeCount(@Param("pageNo") Integer pageNo,@Param("pageSize") Integer pageSize);
 	
 	public Integer deleteOneNotice(@Param("noticeId") String noticeId);
 	

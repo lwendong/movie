@@ -25,12 +25,12 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 									<li>
 											<div>
 												<p class="pic">
-													<a href="goodsDetail?id=${sg.id }">
-													<img class="new_show" title="${sg.description}" src="img/xxx.png.jpg" /></a>
+													<a href="<%=path%>/movieDetail?movieId=${sg.id }">
+													<img class="new_show" title="${sg.description}" src="<%=imgPath%>/img/${sg.img }" /></a>
 												</p>
 												<p class="wz">
 													<div class="hi">
-														<a href="goodsDetail?id=${sg.id }">${sg.name }</a>
+														<a href="<%=path%>/movieDetail?movieId=${sg.id }">${sg.name }</a>
 													</div></br>
 													<div class="hi_text">
 														${sg.description}
@@ -56,7 +56,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 									<a href="<%=path%>/index/page?pageNo=${pageNo - 1 }&typeCode=${movieType }">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 								</c:if>
 								<!-- 最后一页，没有下一页 -->
-								<c:if test="${totalPage != 0 && totalPage == 10}">
+								<c:if test="${totalPage != null && totalPage != 0}">
 									<a href="<%=path%>/index/page?pageNo=${pageNo + 1 }&typeCode=${movieType }">下一页</a>
 								</c:if>
 							</div>

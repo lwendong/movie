@@ -25,7 +25,7 @@ public interface MovieService {
 	
 	public String addOrUpdateMovie(Movie movie, MultipartFile file);
 	
-	public List<Movie> selectMovieByType(Model model,Integer pageNo,String typeCode);
+	public JSONObject selectMovieByType(Model model,Integer pageNo,String typeCode);
 	
 	public List<Movie> selectMovieByPageIndex(Model model,Integer pageNo, String code, String myKey);
 	
@@ -34,5 +34,6 @@ public interface MovieService {
 	public Movie selectMovieById(String movieId);
 	
 	public void updateMovieNum(String movieId, Integer num,Integer type);
+	
 	
 }

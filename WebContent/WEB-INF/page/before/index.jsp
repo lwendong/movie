@@ -33,7 +33,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 											<div>
 												<p class="pic">
 													<a href="<%=path%>/movieDetail?movieId=${sg.id }">
-													<img class="new_show" title="${sg.description}" src="<%=path%>/img/1.jpg" /></a>
+													<img class="new_show" title="${sg.description}" src="<%=imgPath%>/img/${sg.img }" /></a>
 												</p>
 												<c:if test="${sg.play == 0}">
 													<p class="wz">
@@ -73,7 +73,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 									<a href="<%=path%>/index/page?pageNo=${pageNo - 1 }">上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
 								</c:if>
 								<!-- 最后一页，没有下一页 -->
-								<c:if test="${totalPage != 0 && totalPage == 10}">
+								<c:if test="${totalPage != null && totalPage != 0}">
 									<a href="<%=path%>/index/page?pageNo=${pageNo + 1 }">下一页</a>
 								</c:if>
 							</div>

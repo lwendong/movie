@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.admin.CinemaDao">
+
+	<insert id="addCinema" parameterType="cinema">
+		insert into cinema values(replace(uuid(),"-",""), #{cinema.code}, #{cinema.name},now(),0)
+	</insert>
+	
+	<select id="selectCinemaByPage"  resultType="cinema" parameterType="page">
+		select * from cinema where deleted = 0  order by time desc limit #{page.pageNo},#{page.pageSize} 
+	</select>
+	
+	<select id="selectCinemaCount"  resultType="Integer" parameterType="page">
+		select count(1) from cinema where deleted = 0  limit #{page.pageNo},#{page.pageSize} 
+	</select>
+	
+	<update id="deleteCinema"  parameterType="string">
+		update cinema set deleted = 1 where id = #{cinemaId}
+	</update>
+	
+	<select id="selectAllMovieType" resultType="cinema">
+		select code,name from cinema where deleted = 0 order by time desc
+	</select>
+	
+	<select id="selectCinema" resultType="cinema">
+		select code,name from cinema where deleted = 0 order by time desc
+	</select>
+	
+</mapper>

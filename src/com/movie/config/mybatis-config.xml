@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="notice" type="com.movie.pojo.Notice"/>
 		<typeAlias alias="comment" type="com.movie.pojo.Comment"/>
 		<typeAlias alias="ticket" type="com.movie.pojo.Ticket"/>
+		<typeAlias alias="cinema" type="com.movie.pojo.Cinema"/>
 	</typeAliases> 
 	 <mappers>
         <!-- <mapper resource="mapper/admin/AdminGoodsMapper.xml"/> -->
@@ -23,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         <mapper resource="com/movie/mapper/admin/AdminMapper.xml"/>
         <mapper resource="com/movie/mapper/admin/CommentMapper.xml"/>
         <mapper resource="com/movie/mapper/admin/TicketMapper.xml"/>
+        <mapper resource="com/movie/mapper/admin/CinemaMapper.xml"/>
  	</mappers>
 </configuration>
 

@@ -15,7 +15,7 @@ public interface CommentDao {
 	
 	public List<Comment> selectCommentByPage(@Param("page") PageInfo page);
 	
-	public Integer selectCommentCount(@Param("page") PageInfo page);
+	public Integer selectCommentCount(@Param("pageNo") Integer pageNo,@Param("pageSize") Integer pageSize);
 	
 	public Integer deleteOneComment(@Param("commentId") String commentId);
 	

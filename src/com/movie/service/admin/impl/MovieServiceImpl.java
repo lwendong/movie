@@ -16,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONObject;
@@ -53,6 +54,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public JSONObject selectMovieByPage(Integer pageNo ,String code, String myKey) {
+		Integer totalPage = 0;
 		JSONObject jsonObject = new JSONObject();
 		PageInfo pageInfo = new PageInfo(pageNo,10);
 		List<Movie> movieList = movieDao.selectMovieByPage(pageInfo,code,myKey); 
@@ -62,9 +64,12 @@ public class MovieServiceImpl implements MovieService {
 			long releaseTime = releaseDate.getTime();
 			movie.setPlay(nowTime >= releaseTime?1:0);
 		});
+		if(!CollectionUtils.isEmpty(movieList)) {
+			totalPage = movieDao.selectMovieCount(pageInfo.nextPage(),pageInfo.getPageSize()); 
+		}
 		jsonObject.put("allMovie", movieList);
 		jsonObject.put("pageNo", pageNo); 
-		jsonObject.put("totalPage", movieList !=null?movieList.size():0);
+		jsonObject.put("totalPage", totalPage);
 		return jsonObject;
 	}
 
@@ -95,7 +100,7 @@ public class MovieServiceImpl implements MovieService {
 		try {
 			String fullName = file.getOriginalFilename(); 
 			if(fullName.length() > 0){
-				String realpath = "D:\\aa";
+				String realpath = "D:\\img\\";
 				//获取文件后缀
 				String suffix = FilenameUtils.getExtension(fullName);
 				String prefix = UUID.randomUUID().toString().replaceAll("-", "");
@@ -142,9 +147,18 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<Movie> selectMovieByType(Model model, Integer pageNo, String typeCode) {
+	public JSONObject selectMovieByType(Model model, Integer pageNo, String typeCode) {
+		Integer totalPage = 0;
+		JSONObject jsonObject = new JSONObject();
 		PageInfo pageInfo = new PageInfo(pageNo, 10);
-		return movieDao.selectMovieByType(pageInfo,typeCode);
+		List<Movie> movieList = movieDao.selectMovieByType(pageInfo,typeCode);
+		if(!CollectionUtils.isEmpty(movieList)) {
+			totalPage = movieDao.selectMovieCount(pageInfo.nextPage(),pageInfo.getPageSize()); 
+		}
+		jsonObject.put("allMovie", movieList);
+		jsonObject.put("pageNo", pageNo); 
+		jsonObject.put("totalPage", totalPage);
+		return jsonObject;
 	}
 
 	@Override
