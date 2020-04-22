@@ -129,7 +129,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 		        data:JSON.stringify(commentdata),
 		        contentType: 'application/json; charset=UTF-8',
 		        success:function(data){
-		        	top.location="../movieDetail?movieId="+movieId;
+		        	top.location="<%=path%>/movieDetail?movieId="+movieId;
 		        }
 		    });	
 			

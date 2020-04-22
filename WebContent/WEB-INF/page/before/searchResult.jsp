@@ -62,7 +62,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 							
 						</td>
 						<td align="center" bgcolor="#ffffff">
-							<a style="text-decoration: none;color:" href="goodsDetail?id=${mf.id}"><spring:message code="Goandsee"></spring:message></a>
+							<a style="text-decoration: none;color:" href="movieDetail?movieId=${mf.id}"><spring:message code="Goandsee"></spring:message></a>
 						</td>
 					</tr>
 				</c:forEach>
