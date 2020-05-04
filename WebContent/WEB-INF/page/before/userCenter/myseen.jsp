@@ -36,11 +36,13 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 							<td colspan="3" height="15px" style="border: 0 none; background: #FFF"></td>
 						</tr> 
 						<c:forEach var="mo" items="${ticketlist}"> 
-							<tr>
-								<td bgcolor="#ffffff" align="center">${mo.movieName}</td>
-								<td bgcolor="#ffffff" align="center">${mo.movieDescription}</td>
-								<td bgcolor="#ffffff" align="center" >${mo.movieTime}<%-- <fmt:formatDate value="${mo.movieTime}" pattern="yyyy-MM-dd HH:mm:ss" /> --%></td>
-							</tr>
+							<c:if test="${!mo.isTp}">
+								<tr>
+									<td bgcolor="#ffffff" align="center">${mo.movieName}</td>
+									<td bgcolor="#ffffff" align="center">${mo.movieDescription}</td>
+									<td bgcolor="#ffffff" align="center" >${mo.movieTime}<%-- <fmt:formatDate value="${mo.movieTime}" pattern="yyyy-MM-dd HH:mm:ss" /> --%></td>
+								</tr>
+							</c:if>
 						</c:forEach>
 					</table>
 					<div class="page">

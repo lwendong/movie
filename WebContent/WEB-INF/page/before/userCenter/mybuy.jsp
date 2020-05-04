@@ -51,7 +51,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 							${ce.num}
 						</td>
 						<td class="goods_info_115" >
-							${ce.movieTime}
+							<fmt:formatDate value="${ce.movieTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 						</td>
 						<td class="goods_info_115">
 							<fmt:formatDate value="${ce.time}" pattern="yyyy-MM-dd HH:mm:ss" />

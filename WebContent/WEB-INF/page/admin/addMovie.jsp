@@ -51,7 +51,14 @@
 					<input class="in releaseTimeNew" name="releaseTimeLocal" hidden="hidden"/>
 				</td>
 			</tr>
-			<c:if test="${movie.id != null }">
+			<tr>
+				<td class="one"><font color="red">*</font>影片播放时间:</td>
+				<td class="tow">
+					<input class="in playTime" type="datetime-local" value="${movie.playTimeLocal}"/>
+					<input class="in playTimeNew" name="playTimeLocal" hidden="hidden"/>
+				</td>
+			</tr>
+			<%-- <c:if test="${movie.id != null }">
 				<tr>
 					<td class="one"><font color="red">*</font>是否上映:</td>
 					<td class="tow">
@@ -59,7 +66,7 @@
     					<input type="radio" name="play" value="0" id="radio2" <c:if test="${movie.play == 0 }">checked</c:if> /><label for="radio2">否</label>(如果选择是 上映时间会自动设置为当前时间)
 					</td>
 				</tr>
-			</c:if>
+			</c:if> --%>
 			<tr>
 				<td class="one"><font color="red">*</font>影片上映地点:</td>
 				<td class="tow">

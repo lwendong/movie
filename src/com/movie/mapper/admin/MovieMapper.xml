@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="price" property="price"/>
         <result column="time" property="time"/>
         <result column="release_time" property="releaseTime"/>
+        <result column="play_time" property="playTime"/>
         <result column="play_place" property="playPlace"/>
         <result column="deleted" property="deleted"/>
     </resultMap>
@@ -51,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<insert id="addNewMovie" parameterType="movie">
-		insert into movie values(replace(uuid(),"-",""),#{movie.name},#{movie.description},#{movie.typeCode},#{movie.img},#{movie.surplus},#{movie.price},now(),#{movie.releaseTime},#{movie.playPlace},0)
+		insert into movie values(replace(uuid(),"-",""),#{movie.name},#{movie.description},#{movie.typeCode},#{movie.img},#{movie.surplus},#{movie.price},now(),#{movie.releaseTime},#{movie.playPlace},0,#{movie.playTime})
 	</insert>
 	
 	<update id="updateMovie" parameterType="movie">
@@ -66,6 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			price = #{movie.price},
 			time = now(),
 			release_time = #{movie.releaseTime},
+			play_time = #{movie.playTime},
 			play_place = #{movie.playPlace}
 		where id = #{movie.id}
 	</update>

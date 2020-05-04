@@ -97,6 +97,8 @@ public class PageServiceImpl implements PageService{
 		long nowTime = new Date().getTime();
 		long releaseTime = releaseDate.getTime();
 		movie.setPlay(nowTime >= releaseTime?1:0);
+		Long playTime = movie.getPlayTime().getTime();
+		movie.setIsBuy(playTime > nowTime);
 		//还有个查电影院的方法
 		model.addAttribute("movie", movie);
 		model.addAttribute("isBuy", ticketList == null ? 0: ticketList.size() > 0 ?1:0);

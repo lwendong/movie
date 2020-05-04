@@ -4,6 +4,7 @@ function refreshCode(){
 }
 //表单验证
 function checkForm(){
+	debugger
 	var name = $("#name");
 	var tel = $("#tel").val();
 	//检测两次密码是否一致
@@ -13,7 +14,7 @@ function checkForm(){
 	var yzm = $("#codeInput").val();
 	/*var telTest = ;
 	var passwordTest = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d){6,}$/;*/
-	if(name.length > 6){
+	if(name.val().length > 6){
 		alert("用户名超长!");
 		return false;
 	}

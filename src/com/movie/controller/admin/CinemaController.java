@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.movie.pojo.Cinema;
 import com.movie.service.admin.CinemaService;
-
+/**
+ * 暂未使用
+ */
 @Controller
 @RequestMapping("/admin/cinema")
 public class CinemaController {

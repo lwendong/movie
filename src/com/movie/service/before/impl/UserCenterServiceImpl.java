@@ -1,5 +1,6 @@
 package com.movie.service.before.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -69,6 +70,11 @@ public class UserCenterServiceImpl implements UserCenterService{
 		List<Ticket> ticket = userCenterDao.selectTicketByUserId(userId,pageInfo);
 		if(!CollectionUtils.isEmpty(ticket)) {
 			totalPage = userCenterDao.selectTicketByUserIdCount(userId, pageInfo.nextPage(),pageInfo.getPageSize());
+			ticket.forEach(t ->{
+				Long playTime = t.getMoviePlayTime().getTime();
+				Long nowTime = new Date().getTime();
+				t.setIsTp(playTime > nowTime);
+			});
 		}
 		model.addAttribute("ticketlist", ticket.size()>0?ticket:null);
 		model.addAttribute("pageNo", pageNo == null ? 1 : pageNo);
@@ -87,6 +93,7 @@ public class UserCenterServiceImpl implements UserCenterService{
 	@Override
 	public String userMySeen(HttpSession session, Model model, Integer pageNo) {
 		userMyBuy(session,model,pageNo);
+		
 		return "before/userCenter/myseen";
 	}
 

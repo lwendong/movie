@@ -25,6 +25,7 @@
 					<th width="150px">影片类型</th>
 					<th width="150px">影片上映时间</th>
 					<th width="200px">影片上映地点</th>
+					<th width="150px">影片播放时间</th>
 					<th width="200px">影片封面</th>
 					<th width="50px">是否已上映</th>
 					<th width="100px">详情</th>
@@ -39,6 +40,7 @@
 						<td>${movie.typeName }</td>
 						<td><fmt:formatDate value="${movie.releaseTime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td>${movie.playPlace }</td>
+						<td><fmt:formatDate value="${movie.playTime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td><img alt="" width="50" height="50" src="/img/${movie.img}"/></td>
 						<td>
 							<c:if test="${movie.play == 1}">是</c:if>

@@ -58,13 +58,13 @@ public class MovieServiceImpl implements MovieService {
 		JSONObject jsonObject = new JSONObject();
 		PageInfo pageInfo = new PageInfo(pageNo,10);
 		List<Movie> movieList = movieDao.selectMovieByPage(pageInfo,code,myKey); 
-		movieList.forEach(movie ->{
-			Date releaseDate = movie.getReleaseTime();
-			long nowTime = new Date().getTime();
-			long releaseTime = releaseDate.getTime();
-			movie.setPlay(nowTime >= releaseTime?1:0);
-		});
 		if(!CollectionUtils.isEmpty(movieList)) {
+			movieList.forEach(movie ->{
+				Date releaseDate = movie.getReleaseTime();
+				long nowTime = new Date().getTime();
+				long releaseTime = releaseDate.getTime();
+				movie.setPlay(nowTime >= releaseTime?1:0);
+			});
 			totalPage = movieDao.selectMovieCount(pageInfo.nextPage(),pageInfo.getPageSize()); 
 		}
 		jsonObject.put("allMovie", movieList);
@@ -110,14 +110,15 @@ public class MovieServiceImpl implements MovieService {
 				file.transferTo(newFile);
 			}
 			movie.setReleaseTime(releaseTime.parse(movie.getReleaseTimeLocal()));
+			movie.setPlayTime(releaseTime.parse(movie.getPlayTimeLocal()));
 			//更新
 			if(StringUtils.isNotEmpty(movie.getId())) {
 				if(movie.getSurplus() > 40) {
 					movie.setSurplus(40);
 				}
-				if(movie.getPlay().equals(1)) {
-					movie.setReleaseTime(new Date());
-				}
+				/*
+				 * if(movie.getPlay().equals(1)) { movie.setReleaseTime(new Date()); }
+				 */
 				movieDao.updateMovie(movie);
 			}else {//新增
 				movieDao.addNewMovie(movie);
@@ -141,6 +142,13 @@ public class MovieServiceImpl implements MovieService {
 		long releaseTime = releaseDate.getTime();
 		movie.setPlay(nowTime >= releaseTime?1:0);
 		movie.setReleaseTimeLocal(releaseTimeLocal.format(releaseDate));
+		
+		Date playTimeDate = movie.getPlayTime();
+		movie.setPlayTimeLocal(releaseTimeLocal.format(playTimeDate));
+		
+		Long playTime = movie.getPlayTime().getTime();
+		movie.setIsBuy(playTime > nowTime);
+		
 		model.addAttribute("movie", movie);
 		model.addAttribute("movieTypeList",movieType);
 		return "admin/addMovie";

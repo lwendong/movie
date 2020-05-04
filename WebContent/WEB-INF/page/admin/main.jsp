@@ -63,11 +63,6 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 				&nbsp;&nbsp;公告管理&nbsp;&nbsp;&nbsp;&nbsp;>
 			</a>
 		</div>
-		<!-- <ul>
-			<li><a href="adminNotice/toAddNotice" target="center">添加公告</a></li>
-			<li><a href="adminNotice/deleteNoticeSelect" target="center">删除公告</a></li>
-		</ul>
-		 -->
 	</div>
 	<div class="content">
 		<iframe class="iframe" id="iframe" src="admin/movie/movie" name="center" frameborder="0"></iframe>

@@ -22,9 +22,13 @@ public class Ticket extends BaseModel{
 	
 	private String moviePrice;
 	
-	private String movieTime;
+	private Date movieTime;
+	
+	private Date moviePlayTime;
 	
 	private String movieDescription;
+	
+	private Boolean isTp;
 
 	public String getId() {
 		return id;
@@ -90,20 +94,36 @@ public class Ticket extends BaseModel{
 		this.moviePrice = moviePrice;
 	}
 
-	public String getMovieTime() {
-		return movieTime;
-	}
-
-	public void setMovieTime(String movieTime) {
-		this.movieTime = movieTime;
-	}
-
 	public String getMovieDescription() {
 		return movieDescription;
 	}
 
 	public void setMovieDescription(String movieDescription) {
 		this.movieDescription = movieDescription;
+	}
+
+	public Boolean getIsTp() {
+		return isTp;
+	}
+
+	public void setIsTp(Boolean isTp) {
+		this.isTp = isTp;
+	}
+
+	public Date getMovieTime() {
+		return movieTime;
+	}
+
+	public void setMovieTime(Date movieTime) {
+		this.movieTime = movieTime;
+	}
+
+	public Date getMoviePlayTime() {
+		return moviePlayTime;
+	}
+
+	public void setMoviePlayTime(Date moviePlayTime) {
+		this.moviePlayTime = moviePlayTime;
 	}
 	
 }

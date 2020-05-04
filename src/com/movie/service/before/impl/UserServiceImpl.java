@@ -27,6 +27,11 @@ public class UserServiceImpl implements UserService {
 			return jsonObject;
 		}
 		User u = userDao.selectUserByTelAndPassword(user.getTel(), user.getPassword());
+		if(u == null) {
+			jsonObject.put("success",false);
+			jsonObject.put("msg", "用户不存在或密码不正确！！");
+			return jsonObject;
+		}
 		if(u.getState()) {
 			jsonObject.put("success",false);
 			jsonObject.put("msg", "此用户已被冻结");

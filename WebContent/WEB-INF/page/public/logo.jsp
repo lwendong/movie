@@ -26,7 +26,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 			<div class="bottom_top">
 				<!-- LOGO -->
 				<div class="h_logo">
-					<div class="return_im"><a href="before"><img alt="" src="<%=path%>/img/return.png"></a></div>
+					<div class="return_im"><a href="toindex"><img alt="" src="<%=path%>/img/return.png"></a></div>
 					<spring:message code="title"></spring:message>
 				</div>
 			</div>

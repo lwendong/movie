@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="selectTicketByUserId" resultType="ticket">
-		select t.*,m.name as movieName,m.price as moviePrice,m.release_time as movieTime,m.description as movieDescription from ticket t left join movie m on t.movie_id = m.id where t.user_id = #{userId} and t.type = 0 order by t.time desc  limit #{page.pageNo},#{page.pageSize} 
+		select t.*,m.name as movieName,m.price as moviePrice,m.release_time as movieTime,m.play_time as moviePlayTime,m.description as movieDescription from ticket t left join movie m on t.movie_id = m.id where t.user_id = #{userId} and t.type = 0 order by t.time desc  limit #{page.pageNo},#{page.pageSize} 
 	</select>
 	
 	<select id="selectTicketByUserIdCount" resultType="java.lang.Integer">

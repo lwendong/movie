@@ -28,9 +28,15 @@ public class Movie extends BaseModel{
 	
 	private String releaseTimeLocal;
 	
+	private Date playTime;
+	
+	private String playTimeLocal;
+	
 	private String playPlace;
 	
 	private Integer play;
+	
+	private Boolean isBuy;
 	
 	private Boolean deleted;
 	
@@ -145,6 +151,29 @@ public class Movie extends BaseModel{
 	public void setReleaseTimeLocal(String releaseTimeLocal) {
 		this.releaseTimeLocal = releaseTimeLocal;
 	}
-	
+
+	public Date getPlayTime() {
+		return playTime;
+	}
+
+	public void setPlayTime(Date playTime) {
+		this.playTime = playTime;
+	}
+
+	public String getPlayTimeLocal() {
+		return playTimeLocal;
+	}
+
+	public void setPlayTimeLocal(String playTimeLocal) {
+		this.playTimeLocal = playTimeLocal;
+	}
+
+	public Boolean getIsBuy() {
+		return isBuy;
+	}
+
+	public void setIsBuy(Boolean isBuy) {
+		this.isBuy = isBuy;
+	}
 	
 }

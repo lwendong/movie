@@ -37,6 +37,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 								<ul>
 									<li><span>类型:</span> ${movie.typeName }</li>
 									<li><span>上映时间:  </span><fmt:formatDate value="${movie.releaseTime }" pattern="yyyy-MM-dd HH:mm"/></li>
+									<li><span>播放时间:  </span><fmt:formatDate value="${movie.playTime }" pattern="yyyy-MM-dd HH:mm"/></li>
 									<li><span>上映地点:  </span>${movie.playPlace }</li>
 									<li><span>简介:</span>
 										<div class="ms" title="${movie.description }">
@@ -53,12 +54,16 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 											<span class="xj">(票数剩余${movie.surplus })</span>
 										</li>
 										<p class="bottom10 top5">
-											<c:if test="${isBuy == 0 }">
+											<c:if test="${isBuy == 0 && movie.isBuy}">
 												<input type="button" style="cursor: pointer" class="bnt2" onclick="buy('${movie.id }')" value="买票" />
 											</c:if>
 											<c:if test="${isBuy == 1 }">
 												<input type="button" style="cursor: default" class="bnt2" value="已购票" disabled="disabled"/>
 											</c:if>
+											<c:if test="${!movie.isBuy}">
+												<input type="button" style="cursor: default" class="bnt2" value="已播放" disabled="disabled"/>
+											</c:if>
+											
 										</p>
 									</c:if>
 									<c:if test="${movie.play == 0 }"><span style="font-size:25px;color:red">此影片未上映</span></c:if>
