@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.movie.dao.admin.AdminDao">
     
 	<select id="selectAdminUserByPage"  resultType="user" parameterType="page">
-		select * from user where state = 0 and isAdmin = 0 order by time desc limit #{page.pageNo},#{page.pageSize} 
+		select * from user where isAdmin = 0 order by time desc limit #{page.pageNo},#{page.pageSize} 
 	</select>
 	
 	<select id="selectAdminUserCount"  resultType="Integer">

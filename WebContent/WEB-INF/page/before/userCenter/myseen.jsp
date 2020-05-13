@@ -40,7 +40,7 @@ String imgPath = request.getScheme()+"://"+request.getServerName()+":"+request.g
 								<tr>
 									<td bgcolor="#ffffff" align="center">${mo.movieName}</td>
 									<td bgcolor="#ffffff" align="center">${mo.movieDescription}</td>
-									<td bgcolor="#ffffff" align="center" >${mo.movieTime}<%-- <fmt:formatDate value="${mo.movieTime}" pattern="yyyy-MM-dd HH:mm:ss" /> --%></td>
+									<td bgcolor="#ffffff" align="center" ><fmt:formatDate value="${mo.movieTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 								</tr>
 							</c:if>
 						</c:forEach>
